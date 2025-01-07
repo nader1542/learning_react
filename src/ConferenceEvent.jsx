@@ -11,7 +11,7 @@ const ConferenceEvent = () => {
     const dispatch = useDispatch();
     const remainingAuditoriumQuantity = 3 - venueItems.find(item => item.name === "Auditorium Hall (Capacity:200)").quantity;
     const avItems = useSelector((state) => state.av)
-
+    const mealsItems = useSelector((state) => state.meals)
 
     const handleToggleItems = () => {
         console.log("handleToggleItems called");
@@ -31,11 +31,11 @@ const ConferenceEvent = () => {
         }
     };
     const handleIncrementAvQuantity = (index) => {
-        dispatch(incrementQuantity(index))
+        dispatch(incrementAvQuantity(index))
     };
 
     const handleDecrementAvQuantity = (index) => {
-        dispatch(decrementQuantity(index))
+        dispatch(decrementAvQuantity(index))
     };
 
     const handleMealSelection = (index) => {
@@ -194,7 +194,8 @@ const ConferenceEvent = () => {
                                 </div>
 
                                 <div className="input-container venue_selection">
-
+                                    <label htmlFor="numberOfPeople"><h3>Number of peaople:</h3></label>
+                                    <input type="number" className="input_box5" id="numberOfPeople" value={numberOfPeople} onChange={(e) => setNumberOfPeople(parseInt(e.target.value))} min="1" />
                                 </div>
                                 <div className="meal_selection">
 
